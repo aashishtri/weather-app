@@ -34,7 +34,7 @@ var weatherdata = (data) => {
 		humidity,
 		precip,
 	} = data;
-	return "location :" + location + "<br><br>" + "temperature :" + temperature + "<br>" + "humidity :" + humidity + "<br>" + "precip :" + precip;
+	return "location :" + location + "<br><br>" + "temperature :" + temperature + "<br>" + "humidity :" + humidity + "<br>" + "precip :" + precip*100;
 
 
 
