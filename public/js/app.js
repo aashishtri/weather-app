@@ -1,10 +1,4 @@
-console.log("js file");
-// fetch("http://puzzle.mead.io/puzzle").then((response)=>{
-// 	response.json().then((data)=>{
-// 		console.log(data)
-// 	})
-// })
-// 
+
 var weatherform = document.querySelector("button");
 var search = document.querySelector("input");
 var successMessage = document.querySelector(".success");
@@ -17,12 +11,12 @@ weatherform.addEventListener("click", (e) => {
 	findweather(search.value);
 })
 var findweather = (location) => {
-	const url = "http://api.weatherstack.com/current?access_key=148c4840ebb4f2e63bca31758f6c111a&query=" + location;
+	const url = "/weather?address=" + location;
 	try {
 		fetch(url).then(response => {
 			response.json().then((data) => {
 				if (data.error) {
-					return failureMessage.innerHTML = "location not found";
+					return failureMessage.innerHTML = "Unable to find Location. Please try again";
 				}
 				return successMessage.innerHTML = weatherdata(data);
 
@@ -35,11 +29,12 @@ var findweather = (location) => {
 
 var weatherdata = (data) => {
 	const {
+		location,
 		temperature,
 		humidity,
 		precip,
-	} = data.current;
-	return "location :" + data.location.name + "<br><br>" + "temperature :" + temperature + "<br>" + "humidity :" + humidity + "<br>" + "precip :" + precip;
+	} = data;
+	return "location :" + location + "<br><br>" + "temperature :" + temperature + "<br>" + "humidity :" + humidity + "<br>" + "precip :" + precip;
 
 
 
