@@ -65,10 +65,7 @@ app.get('/weather', (req, res) => {
 						wind_speed,
 						humidity
 					} = forecastdata;
-					// console.log('temprature : ' + temperature);
-					// console.log('chances of rain : ' + forecastdata.precip + '\%');
-					// console.log("wind speed : " + forecastdata.wind_speed);
-					// console.log("humidity : " + forecastdata.humidity);
+					
 					return res.send({
 						location : point.loc,
 						temperature,

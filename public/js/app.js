@@ -2,9 +2,8 @@
 var weatherform = document.querySelector("button");
 var search = document.querySelector("input");
 var successMessage = document.querySelector(".success");
-var failureMessage = document.querySelector(".failure");
 weatherform.addEventListener("click", (e) => {
-	failureMessage.innerHTML = "";
+	
 	successMessage.innerHTML = "";
 	e.preventDefault();
 	console.log(search.value);
@@ -16,7 +15,7 @@ var findweather = (location) => {
 		fetch(url).then(response => {
 			response.json().then((data) => {
 				if (data.error) {
-					return failureMessage.innerHTML = "Unable to find Location. Please try again";
+					return successMessage.innerHTML = "Unable to find Location. Please try again";
 				}
 				return successMessage.innerHTML = weatherdata(data);
 
@@ -34,7 +33,8 @@ var weatherdata = (data) => {
 		humidity,
 		precip,
 	} = data;
-	return "location :" + location + "<br><br>" + "temperature :" + temperature + "<br>" + "humidity :" + humidity + "<br>" + "precip :" + precip*100;
+	console.log(data);
+	return "Location : " + location + "<br><br>" + "Temperature : " + temperature + "<br>" + "Humidity : " + humidity + "<br>" + "Precip : " + precip*100;
 
 
 
